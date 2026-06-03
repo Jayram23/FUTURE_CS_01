@@ -6,21 +6,7 @@ Tools: OWASP ZAP 2.17.0 (Passive Scan) | Firefox DevTools
 Type: Passive Security Assessment — No exploitation performed
 Date: June 2026
 
-📁 Repository Structure
-juice-shop-audit/
-│
-├── README.md
-│
-├── report/
-│   └── Vulnerability_Assessment_Report.docx
-│
-└── evidence/
-    ├── 01_ZAP_Welcome_Screen.png
-    ├── 02_ZAP_Manual_Explore_Setup.png
-    ├── 03_Juice_Shop_Homepage.png
-    ├── 04_ZAP_Alerts_Panel.png
-    └── 05_Firefox_DevTools_Headers.png
-    
+
 🎯 Objectives
 
 This project documents a passive-only web application security assessment performed on the OWASP Juice Shop demo application.
@@ -65,11 +51,13 @@ Tool	Version	Purpose
 OWASP ZAP	2.17.0	Passive vulnerability detection
 Firefox DevTools	Latest	HTTP header & storage inspection
 Kali Linux	Latest	Testing environment
+
 ⚠️ Scope & Limitations
 Target application: OWASP Juice Shop demo instance
 Testing limited to publicly accessible features
 Passive analysis only (no active scanning or exploitation)
 Results reflect observed security posture only
+
 📊 Business Impact
 
 The findings indicate common security misconfigurations typically found in early-stage or intentionally vulnerable web applications.
