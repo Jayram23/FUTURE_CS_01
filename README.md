@@ -1,92 +1,108 @@
-🔐 Web Application Vulnerability Assessment — OWASP Juice Shop
+# 🔐 Vulnerability Assessment Report — OWASP Juice Shop
 
+> **Passive Web Application Security Audit**  
+> Target: [https://demo.owasp-juice.shop/](https://demo.owasp-juice.shop/)  
+> Date: June 3, 2026  
+> Type: Passive scan only — no exploitation performed
 
-Target: https://demo.owasp-juice.shop/
-Tools: OWASP ZAP 2.17.0 (Passive Scan) | Firefox DevTools
-Type: Passive Security Assessment — No exploitation performed
-Date: June 2026
+---
 
+## 📋 Project Overview
 
-🎯 Objectives
+This repository contains the deliverables of a passive security assessment performed on the OWASP Juice Shop demo application. The goal was to identify common web vulnerabilities using only passive observation techniques — no active attacks, no data extraction, no exploitation.
 
-This project documents a passive-only web application security assessment performed on the OWASP Juice Shop demo application.
+This project was conducted as part of a cybersecurity training curriculum, applying real-world methodology to a safe, intentionally vulnerable target.
 
-The main objectives were:
+---
 
-Identify missing or misconfigured HTTP security headers
-Detect information disclosure issues
-Review client-side security weaknesses
-Assess baseline security posture of the application
+## 🛠️ Tools Used
 
-No exploitation or active attack techniques were performed.
+| Tool | Version | Purpose |
+|---|---|---|
+| OWASP ZAP | 2.17.0 | Intercepting proxy — passive scan |
+| Firefox | 140 | Browser for manual exploration |
+| Firefox DevTools | Built-in | HTTP header inspection |
+| Firefox Profiler | Built-in | Client-side JS / network analysis |
+| Kali Linux | Rolling | Testing environment (VMware) |
 
-🔍 Methodology
+---
 
-The assessment was conducted using a strictly passive approach:
+## 📁 Repository Structure
 
-Manual navigation of the application
-OWASP ZAP Passive Scan (no active scanning enabled)
-HTTP response analysis via Firefox Developer Tools
-Review of browser storage and client-side behaviour
+```
+juice-shop-audit/
+│
+├── README.md                        ← This file
+│
+├── report/
+│   └── Vulnerability_Assessment_Report_JuiceShop_2026.docx
+│
+├── evidence/
+│   ├── 01_zap_welcome_session.png           ← ZAP 2.17.0 initial setup
+│   ├── 02_zap_manual_explore_target.png     ← ZAP proxying Juice Shop
+│   ├── 03_juiceshop_homepage.png            ← Target application (Kali/Firefox)
+│   ├── 04_zap_alerts_panel.png             ← 13 alerts from passive scan
+│   └── 05_firefox_profiler_js.png          ← JS execution analysis
+│
+└── tools/
+    └── zap_session_notes.md                ← Methodology notes
+```
 
-👉 No authentication bypass, fuzzing, brute force, or attack simulation was performed.
+---
 
-🔍 Key Findings Summary
-#	Vulnerability	Risk Level
-1	Missing Content Security Policy (CSP) Header	🟠 Medium
-2	Missing Clickjacking Protection (X-Frame-Options / frame-ancestors)	🟠 Medium
-3	Missing Strict-Transport-Security (HSTS) Header	🟠 Medium
-4	Missing X-Content-Type-Options Header	🟡 Low
-5	Potential Sensitive Data Exposure via Client-Side Storage	🔴 High
-6	Insecure Session Handling Observed in Application Behaviour	🔴 High
-7	Internal Information Disclosure via HTTP Responses	🟡 Low
-8	Metadata / Timestamp Exposure in Client Responses	🟡 Low
-9	Browser Storage Information Exposure (Local / Session Storage)	🟡 Low
+## 🔍 Findings Summary
 
-📊 Summary
-Total ZAP alerts: 13
-Consolidated findings: 9 categorized security issues
-🛠️ Tools Used
-Tool	Version	Purpose
-OWASP ZAP	2.17.0	Passive vulnerability detection
-Firefox DevTools	Latest	HTTP header & storage inspection
-Kali Linux	Latest	Testing environment
+| ID | Vulnerability | Risk |
+|---|---|---|
+| F-01 | Missing Content Security Policy (CSP) Header | 🟡 MEDIUM |
+| F-02 | Missing HTTP Strict Transport Security (HSTS) | 🟡 MEDIUM |
+| F-03 | Missing Anti-Clickjacking Header | 🟡 MEDIUM |
+| F-04 | Session ID Exposed in URL | 🔴 HIGH |
+| F-05 | Referer Header Leaks Session ID | 🟡 MEDIUM |
+| F-06 | Timestamp Disclosure (Unix) | 🟢 LOW |
+| F-07 | X-Content-Type-Options Header Missing | 🟢 LOW |
+| F-08 | Private IP Address Disclosure | 🟢 LOW |
+| F-09 | Sensitive Data in Browser Storage | 🟡 MEDIUM |
+| F-10 | Cross-Domain Misconfiguration (CORS) | 🟡 MEDIUM |
 
-⚠️ Scope & Limitations
-Target application: OWASP Juice Shop demo instance
-Testing limited to publicly accessible features
-Passive analysis only (no active scanning or exploitation)
-Results reflect observed security posture only
+**Total: 1 High · 6 Medium · 3 Low**
 
-📊 Business Impact
+---
 
-The findings indicate common security misconfigurations typically found in early-stage or intentionally vulnerable web applications.
+## ⚙️ Methodology
 
-While no critical server-side vulnerabilities were confirmed, the following risks are relevant from a business perspective:
+All testing was **passive only**:
 
-Increased exposure to client-side attacks (e.g., XSS)
-Lack of browser-level security protections
-Potential information leakage useful for attackers during reconnaissance
-Weak baseline security hardening practices
+1. OWASP ZAP configured as proxy on `localhost:8080`
+2. Firefox routed through ZAP, HUD disabled
+3. Manual browsing of the Juice Shop application
+4. ZAP passive scanner automatically flagged anomalies in HTTP traffic
+5. HTTP headers manually verified in Firefox DevTools
+6. Client-side behaviour observed with Firefox Performance Profiler
 
-📬 Key Recommendations
+No forms were submitted with attack payloads. No authentication was attempted. No data was read, modified, or exfiltrated.
 
-To improve security posture, the following controls should be implemented:
+---
 
-Enforce a strict Content Security Policy (CSP)
-Enable HSTS (HTTP Strict Transport Security)
-Add X-Frame-Options / frame-ancestors to prevent clickjacking
-Configure X-Content-Type-Options: nosniff
-Secure session handling (HttpOnly, Secure, SameSite cookies)
-Minimize information disclosure in HTTP responses
+## 📄 Report
 
-🧾 Conclusion
+The full professional report is available in `/report/`. It includes:
 
-This passive security assessment highlights several common web application security misconfigurations affecting browser-level protection mechanisms.
+- Executive Summary (business language)
+- Scope and methodology description
+- 10 detailed finding cards with business impact and remediation steps
+- Risk classification summary table
+- Conclusion and prioritised recommendations
 
-Although no critical vulnerabilities were identified, implementing baseline security headers and strengthening client-side security controls would significantly improve the application's resilience against common web attacks.
+---
 
-📌 Notes
-This project is intended for educational and portfolio purposes
-The target application is intentionally vulnerable and publicly provided for security training
-No unauthorized systems were tested
+## ⚠️ Disclaimer
+
+This assessment was performed exclusively on a publicly available, intentionally vulnerable demo application operated by the OWASP Foundation for educational purposes. No real systems, real users, or real data were involved. This project is intended solely for educational and portfolio demonstration purposes.
+
+---
+
+## 👤 Author
+
+**Cybersecurity Student —  Cybersecurity Track**  
+Tools: Kali Linux · OWASP ZAP · Firefox · VMware Workstation
