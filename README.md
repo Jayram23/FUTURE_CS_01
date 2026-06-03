@@ -20,6 +20,7 @@ juice-shop-audit/
     ├── 03_Juice_Shop_Homepage.png
     ├── 04_ZAP_Alerts_Panel.png
     └── 05_Firefox_DevTools_Headers.png
+    
 🎯 Objectives
 
 This project documents a passive-only web application security assessment performed on the OWASP Juice Shop demo application.
@@ -55,6 +56,7 @@ Review of browser storage and client-side behaviour
 7	Internal Information Disclosure via HTTP Responses	🟡 Low
 8	Metadata / Timestamp Exposure in Client Responses	🟡 Low
 9	Browser Storage Information Exposure (Local / Session Storage)	🟡 Low
+
 📊 Summary
 Total ZAP alerts: 13
 Consolidated findings: 9 categorized security issues
@@ -78,6 +80,7 @@ Increased exposure to client-side attacks (e.g., XSS)
 Lack of browser-level security protections
 Potential information leakage useful for attackers during reconnaissance
 Weak baseline security hardening practices
+
 📬 Key Recommendations
 
 To improve security posture, the following controls should be implemented:
@@ -88,6 +91,7 @@ Add X-Frame-Options / frame-ancestors to prevent clickjacking
 Configure X-Content-Type-Options: nosniff
 Secure session handling (HttpOnly, Secure, SameSite cookies)
 Minimize information disclosure in HTTP responses
+
 🧾 Conclusion
 
 This passive security assessment highlights several common web application security misconfigurations affecting browser-level protection mechanisms.
