@@ -1,6 +1,6 @@
 🔐 Web Application Vulnerability Assessment — OWASP Juice Shop
 
-Author: Marina | Master 1 Cybersecurity — IPNET University (2025–2026)
+
 Target: https://demo.owasp-juice.shop/
 Tools: OWASP ZAP 2.17.0 (Passive Scan) | Firefox DevTools
 Type: Passive Security Assessment — No exploitation performed
