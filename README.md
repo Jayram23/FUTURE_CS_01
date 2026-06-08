@@ -1,4 +1,4 @@
-# 🔐 Vulnerability Assessment Report — OWASP Juice Shop
+#  Vulnerability Assessment Report — OWASP Juice Shop
 
 > **Passive Web Application Security Audit**  
 > Target: [https://demo.owasp-juice.shop/](https://demo.owasp-juice.shop/)  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 Project Overview
+##  Project Overview
 
 This repository contains the deliverables of a passive security assessment performed on the OWASP Juice Shop demo application. The goal was to identify common web vulnerabilities using only passive observation techniques — no active attacks, no data extraction, no exploitation.
 
@@ -15,7 +15,7 @@ This project was conducted as part of a cybersecurity training curriculum, apply
 
 ---
 
-## 🛠️ Tools Used
+##  Tools Used
 
 | Tool | Version | Purpose |
 |---|---|---|
@@ -27,7 +27,7 @@ This project was conducted as part of a cybersecurity training curriculum, apply
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 juice-shop-audit/
@@ -50,7 +50,7 @@ juice-shop-audit/
 
 ---
 
-## 🔍 Findings Summary
+##  Findings Summary
 
 | ID | Vulnerability | Risk |
 |---|---|---|
@@ -69,7 +69,7 @@ juice-shop-audit/
 
 ---
 
-## ⚙️ Methodology
+##  Methodology
 
 All testing was **passive only**:
 
@@ -84,7 +84,7 @@ No forms were submitted with attack payloads. No authentication was attempted. N
 
 ---
 
-## 📄 Report
+##  Report
 
 The full professional report is available in `/report/`. It includes:
 
@@ -96,13 +96,13 @@ The full professional report is available in `/report/`. It includes:
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 This assessment was performed exclusively on a publicly available, intentionally vulnerable demo application operated by the OWASP Foundation for educational purposes. No real systems, real users, or real data were involved. This project is intended solely for educational and portfolio demonstration purposes.
 
 ---
 
-## 👤 Author
+##  Author : Jayram23
 
 **Cybersecurity Student —  Cybersecurity Track**  
 Tools: Kali Linux · OWASP ZAP · Firefox · VMware Workstation
